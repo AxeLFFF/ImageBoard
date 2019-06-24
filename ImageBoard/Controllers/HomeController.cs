@@ -8,18 +8,13 @@ using ImageBoard.Models;
 
 namespace ImageBoard.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BoardBaseController
     {
-        public IActionResult Index()
+        public IActionResult Index(string board="b")
         {
             return View();
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

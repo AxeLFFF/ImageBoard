@@ -1,11 +1,29 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var Boards = ViewData["BoardsViewModel"] as BoardsViewModel;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ImageBoard</title>
+    <title>ImageBoard</title>
 </head>
 <body>
-            @RenderBody()
+    <header>
+
+    </header>
+    <div class="boards" style="word-wrap">
+        @foreach(Board board in Boards.Boards)
+        {
+            <a href="~/@board.ShortName/">@board.ShortName</a> 
+        }
+    </div>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <footer>
+
+    </footer>
 </body>
 </html>

@@ -55,6 +55,9 @@ namespace ImageBoard
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute("imageBoard",
+                    "board/get", new { controller = "Home", action = "Index" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

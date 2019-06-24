@@ -15,7 +15,7 @@ namespace ImageBoard.Models
         [Required]
         public string Text { get; set; }
 
-        public List<string> ContentRefs { get; set; } = new List<string>();
+        public string ContentRef { get; set; }
 
         public string SenderName { get; set; } = "Anonymous";
 

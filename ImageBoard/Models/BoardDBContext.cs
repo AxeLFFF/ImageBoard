@@ -13,7 +13,7 @@ namespace ImageBoard.Models
         public DbSet<Thread> Threads { get; set; }
         public DbSet<Post> Posts { get; set; }
 
-        public BoardDBContext(DbContextOptions<BoardDBContext> options) : base(options)
+        public BoardDBContext()
         {
             Database.EnsureCreated();
         }
