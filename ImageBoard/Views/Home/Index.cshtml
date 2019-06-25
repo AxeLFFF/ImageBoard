@@ -2,4 +2,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-Здесь будет лог борды
+@model IEnumerable<Board>
+
+<div class="boards" style="font-size:x-large">
+    @foreach(Board board in Model)
+    {
+        <a href="~/@board.ShortName" title="@board.Name">@board.ShortName</a> 
+    }
+</div>
