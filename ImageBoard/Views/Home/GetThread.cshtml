@@ -13,7 +13,7 @@
     }
 }
 
-<div class="thread_content">
+<div class="thread_log">
     <table style="undefined;table-layout: fixed; width: 460px">
         <colgroup>
             <col style="width: 165px">
@@ -23,17 +23,30 @@
         </colgroup>
         @foreach (Post post in Model.Posts)
         {
-            <tr>
-                <th>@post.Id</th>
-                <th>@post.SenderName</th>
-                <th>@GetVariantStr(post.IsOP, "ОП-пост", "")</th>
-                <th>@GetVariantStr(post.IsSage, "Sage", "")</th>
-            </tr>
-            <tr>
-                <td><img src="@post.ContentRef"</td>
-                <td colspan="3">@post.Text</td>
-            </tr>
+        <tr>
+            <th>@post.Id</th>
+            <th>@post.SenderName</th>
+            <th>@GetVariantStr(post.IsOP, "ОП-пост", "")</th>
+            <th>@GetVariantStr(post.IsSage, "Sage", "")</th>
+            <th><a href="Answer();">Ответить</a></th>
+        </tr>
+        <tr>
+            <td><img src="@post.ContentRef" /></td>
+            <td colspan="4">@post.Text</td>
+        </tr>
         }
     </table>
+</div>
+<a name="log_bottom" hidden></a>
+<div class="form-text">
+    <form method="post" autocomplete="off">
+        <input type="text" name="SenderName" placeholder="Отправитель" value="@ViewData["SenderName"]" /> <br />
+        <textarea name="Text" placeholder="Текст сообщения"></textarea> <br />
+        <input type="text" name="ContentRef" placeholder="Ссылка на изображение" /> <br />
+        <label><input type="checkbox" title="ОП-пост" name="IsOP" />ОП-пост</label>
+        <label><input type="checkbox" title="Sage" name="IsSage" />Sage</label> <br />
+        <input type="hidden" name="ThreadId" value="@Model.Id" />
+        <input type="submit" value="Отправить" />
+    </form>
 </div>
 

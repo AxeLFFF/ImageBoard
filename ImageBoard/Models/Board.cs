@@ -16,6 +16,6 @@ namespace ImageBoard.Models
 
         public string IconRef { get; set; }
 
-        public List<Thread> Threads { get; set; } = new List<Thread>();
+        public virtual List<Thread> Threads { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace ImageBoard.Models
 
         public DateTime CreationDateTime { get; set; } = new DateTime();
 
-        public List<Post> Posts { get; set; } = new List<Post>();
+        public virtual List<Post> Posts { get; set; }
 
         public int? BoardId { get; set; }
-        public Board Board { get; set; }
+        public virtual Board Board { get; set; }
     }
 }

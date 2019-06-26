@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace ImageBoard.Models
 {
@@ -20,6 +21,7 @@ namespace ImageBoard.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ImageBoardDB;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder);
         }

@@ -16,7 +16,11 @@
         {
             <tr>
                 <th><a href="~/@Model.ShortName/@thread.Id">@thread.Id</a></th>
-                <th>@thread.Posts[0].Text.Remove(50)</th>
+                <th>
+                    @(thread.Posts[0].Text.Length > 50 ? 
+                    thread.Posts[0].Text.Remove(50) : thread.Posts[0].Text)
+                    <a href="~/@(Model.ShortName)/@(thread.Id)">[Далее]</a>
+                </th>
             </tr>
         }
     </table>
