@@ -8,6 +8,7 @@ namespace ImageBoard.Models
 {
     public class Post
     {
+        [Key]
         public int Id { get; set; }
 
         public DateTime PostDateTime { get; set; } = new DateTime();
@@ -23,7 +24,7 @@ namespace ImageBoard.Models
 
         public bool IsSage { get; set; }
 
-        public int? ThreadId { get; set; }
+        public int ThreadId { get; set; }
         public virtual Thread Thread { get; set; }
     }
 }

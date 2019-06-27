@@ -33,6 +33,33 @@ namespace ImageBoard.Controllers
             else return View(board);
         }
 
+        [HttpPost]
+        [Route("{board_name}")]
+        public IActionResult GetBoard(string name, string text, string contentRef, int boardId)
+        {
+            Thread thread = new Thread { CreationDateTime = DateTime.Now, BoardId = boardId };
+            thread = _boardDB.Threads.Add(thread).Entity;
+            _boardDB.SaveChanges();
+
+            Post opPost = new Post
+            {
+                ContentRef = contentRef,
+                IsOP = true,
+                IsSage = false,
+                PostDateTime = DateTime.Now,
+                SenderName = name,
+                Text = text,
+                Thread=thread,
+                ThreadId=thread.Id
+            };
+            _boardDB.Posts.Add(opPost);
+            _boardDB.SaveChanges();
+
+            return LocalRedirect($@"~/{_boardDB.Boards.Where(b => b.Id == thread.BoardId).
+                FirstOrDefault()?.ShortName ?? "board_not_found"}/{thread.Id}");
+        }
+
+
         [HttpGet]
         [Route("{board}/{thread_id:int}")]
         public IActionResult GetThread(string board, int thread_id)
@@ -42,7 +69,6 @@ namespace ImageBoard.Controllers
             {
                 return BadRequest($"Thread {thread_id} is not found");
             }
-            ViewData["SenderName"] = "Анонимус";
             return View(thread);
         }
 
@@ -59,7 +85,8 @@ namespace ImageBoard.Controllers
             var s = _boardDB.Boards.Where(b => b.Id == thread.BoardId).FirstOrDefault().ShortName;
             return LocalRedirect($"~/{s}/{p.ThreadId}#log_bottom");
         }
-        
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

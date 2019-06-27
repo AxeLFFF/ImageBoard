@@ -23,7 +23,22 @@ namespace ImageBoard.Models
         {
             optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ImageBoardDB;Trusted_Connection=True;");
+
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Board>().HasData(
+                new Board[]
+                {
+                    new Board{Id=1, Name="Бред", ShortName="b"},
+                    new Board{Id=2, Name="Программирование", ShortName="pr"},
+                    new Board{Id=3, Name="Работа и карьера", ShortName="wrk"},
+                    new Board{Id=4, Name="Общение", ShortName="soc"}
+                });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

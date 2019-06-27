@@ -5,7 +5,15 @@
 }
 
 @model Board
-
+<div class="form-text">
+    <form method="post" autocomplete="off">
+        <input type="text" name="name" placeholder="Отправитель" value="@ViewData["SenderName"]" /> <br />
+        <textarea name="text" placeholder="Тест сообщения"></textarea> <br />
+        <input type="text" name="contentRef" placeholder="Ссылка на изображение" /> <br />
+        <input type="hidden" name="boardId" value="@Model.Id" />
+        <input type="submit" value="Создать тред" />
+    </form>
+</div>
 <div class="board_content">
     <table style="undefined;table-layout: fixed; width: 436px">
         <colgroup>

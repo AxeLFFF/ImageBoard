@@ -12,6 +12,7 @@ namespace ImageBoard.Controllers
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
+            ViewData["SenderName"] = "Анонимус";
             ViewData["BoardsViewModel"] = new BoardsViewModel();
 
             base.OnActionExecuting(context);
