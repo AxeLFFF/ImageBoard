@@ -5,6 +5,10 @@
 }
 
 @model Board
+
+<div class="board_title">
+    @(Model.ShortName) - @(Model.Name)
+</div>
 <div class="form-text">
     <form method="post" autocomplete="off">
         <input type="text" name="name" placeholder="Отправитель" value="@ViewData["SenderName"]" /> <br />
@@ -23,12 +27,12 @@
         @foreach (Thread thread in Model.Threads)
         {
             <tr>
-                <th><a href="~/@Model.ShortName/@thread.Id">@thread.Id</a></th>
-                <th>
+                <td><a href="~/@Model.ShortName/@thread.Id">@thread.Id</a></td>
+                <td>
                     @(thread.Posts[0].Text.Length > 50 ? 
                     thread.Posts[0].Text.Remove(50) : thread.Posts[0].Text)
                     <a href="~/@(Model.ShortName)/@(thread.Id)">[Далее]</a>
-                </th>
+                </td>
             </tr>
         }
     </table>

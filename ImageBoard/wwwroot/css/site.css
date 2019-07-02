@@ -1,56 +1,67 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
+﻿html {
   position: relative;
   min-height: 100%;
+  font-family: Tahoma;
+  font-size: 14px;
+}
+
+header {
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
 }
 
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
+  text-align: center;
 }
-.footer {
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  /* Set the fixed height of the footer here */
   height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 60px;
+  background-color: white;
+}
+
+td{
+    border: 1px solid black;
+}
+
+.board_list {
+    border: 1px solid black;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.content {
+    border: 1px solid black;
+    background-color: lemonchiffon;
+}
+
+.startpage_content {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.thread_log {
+    border: 3px solid black;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.logo{
+    width: 200px;
+    height: auto;
+}
+
+.post_image{
+    height: 50px;
+    width: auto;
+}
+
+.board_title{
+    font-size: 18px;
+    font-weight: bolder;
 }

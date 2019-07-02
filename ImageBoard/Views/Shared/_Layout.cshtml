@@ -7,13 +7,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <title>ImageBoard</title>
 </head>
 <body>
     <header>
-
+        <a href=""><img class="logo" src="~/logo.png" /></a>
     </header>
-    <div class="boards" style="word-wrap">
+    <div class="board_list" style="word-wrap">
         @foreach(Board board in Boards.Boards)
         {
             <a href="~/@board.ShortName/">@board.ShortName</a> 
@@ -23,7 +24,7 @@
         @RenderBody()
     </div>
     <footer>
-
+        ImageBoard example for <a href="https://github.com/AxeLFFF">https://github.com/AxeLFFF</a>
     </footer>
 </body>
 </html>
